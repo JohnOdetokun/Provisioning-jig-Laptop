@@ -6,13 +6,13 @@ host = ""
 port = 13000
 buf = 1024
 addr = (host, port)
-UDPSock = socket(AF_INET, SOCK_DGRAM)
-UDPSock.bind(addr)
+serv = socket(AF_INET, SOCK_STREAM)
+serv.bind(addr)
+serv.listen(5)
 print("Waiting to receive messages...")
-while True:
-    (data, addr) = UDPSock.recvfrom(buf)
-    print("Received message: " + data)
-    if (data == "exit"):
-        break
-UDPSock.close()
-os._exit(0)
+
+conn,addr= serv.accept()
+print("...Connected!")
+conn.send(bytes('Testing', 'utf-8'))
+
+conn.close

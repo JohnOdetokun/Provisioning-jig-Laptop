@@ -2,7 +2,7 @@
 # Message Sender
 import os
 from socket import *
-host = "169.254.91.109" # set to IP address of target computer
+host = "localhost" # set to IP address of target computer
 port = 13000
 addr = (host, port)
 buf = 1024
