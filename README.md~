@@ -6,8 +6,4 @@ This program imports from clientConnect and upgrade_debugger
 
 seems to be a problem committing native folder(linux drivers do not get commit..)
 
-Program is run after debugger program is run on raspberry pi
-
-ethernet cable must be connected.
-
 
