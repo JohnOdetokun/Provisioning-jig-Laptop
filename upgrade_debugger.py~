@@ -20,9 +20,11 @@ class UpgradeSTLink:
             "No ST-Link detected"])
         if upgrade_result == 0:
             logging.info("Firmware upgraded")
+            print("up")
             self.status = 1
         elif upgrade_result == 1:
             logging.info("upgraded or already the latest version")
+            print("up")
             self.status =1
         else:
             logging.critical("something went wrong")

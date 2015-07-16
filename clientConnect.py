@@ -1,4 +1,3 @@
-import os
 from socket import *
 class NetworkConnect:
     def __init__(self):
@@ -8,7 +7,7 @@ class NetworkConnect:
         self.buf = 1024
 
         self.cli = socket( AF_INET, SOCK_STREAM)
-##	self.cli.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
+	#self.cli.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
         self.cli.connect((self.addr))
 
 
@@ -19,10 +18,11 @@ class NetworkConnect:
         self.cli.close()
 
     def receive(self):
-        return self.cli.recv(self.buf)
+        return str(self.cli.recv(self.buf))
 
     def send(self,message):
         self.cli.send(bytes(message,"utf-8"))
         
         
-        
+    def exit(self):
+        self.cli.close()
