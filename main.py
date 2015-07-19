@@ -1,26 +1,23 @@
 #!/usr/bin/env python
-from clientConnect import NetworkConnect
+from serverConnect import NetworkConnect
 from upgrade_debugger import UpgradeSTLink
 
 import logging
-
-with NetworkConnect() as network:
-    while True:
+logging.basicConfig(format = "%(asctime)s:" + logging.BASIC_FORMAT)
+logger = logging.getLogger()
+logger.setLevel(logging.DEBUG)
+while True:
+    with NetworkConnect(logger.getChild('network')) as network:
         piCommand = network.receive()
         if "start" in piCommand:
             print("beginning upgrade")
             try:
-                with UpgradeSTLink() as stStatus:
-                    if stStatus.status == 1:
-                        print("completing upgrade")
-                        network.send("done")
-                        
-                    else:
-                        network.send("Couldn't upgrade")
+                with UpgradeSTLink(logger.getChild('upgrade')) as stStatus:
+                    network.send("done")
             except:
                 network.send("Couldn't upgrade")
         elif "b\'\'" == piCommand:
             logging.info("Waiting for instruction")
-
         else:
             network.send("Couldn't upgrade")
+            logging.critical('received wrong message')
