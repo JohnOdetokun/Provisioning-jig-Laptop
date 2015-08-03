@@ -10,4 +10,5 @@ Program is run after debugger program is run on raspberry pi
 
 ethernet cable must be connected.
 
+Communicates with Raspberry pi and begins firmware upgrade of debugger chip
 
