@@ -10,4 +10,10 @@ Program is run after debugger program is run on raspberry pi
 
 ethernet cable must be connected.
 
+Communicates with Raspberry pi and begins firmware upgrade of debugger chip
+
+Zip for st-linkv2_upgrade is included. Extract zip and copy contents of AllPlatforms to Provisioning-jig-Laptop directory
+
+you can run using ./main.py
+
 
